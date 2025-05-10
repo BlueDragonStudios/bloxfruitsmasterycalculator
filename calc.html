@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blox Fruits Mastery Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="banner">
+        <h2>Blox Fruits Mastery XP Calculator</h2>
+    </div>
+    <h3>
+        This tool is used to calculate how much XP is needed to reach your desired sword, gun, or Blox Bruit mastery. The calculator determines the number of times the player has to kill Longma, as that is the most popular boss to grind mastery with. Please report bugs/suggestions to jbsolutionsbugrepo@gmail.com.
+    </h3>
+  <form id="mastForm" onsubmit="calculateMastery(event)">
+    <label for="currentMast">Current Mastery Level:</label>
+    <input type="number" id="currentMast" name="currentMast" required><br><br>
+
+    <label for="targetMast">Target Mastery Level:</label>
+    <input type="number" id="targetMast" name="targetMast" required><br><br>
+
+    <label>
+      <input type="checkbox" id="doubleXP"> 2x Mastery Gamepass Owned
+    </label><br><br>
+
+    <button type="submit">Calculate XP Needed</button>
+  </form>
+
+  <div id="messages"></div>
+
+  <script>
+    function calculateMastery(event) {
+      event.preventDefault();
+      const currentMast = parseInt(document.getElementById("currentMast").value);
+      const targetMast = parseInt(document.getElementById("targetMast").value);
+      const hasDoubleXP = document.getElementById("doubleXP").checked;
+      const messagesDiv = document.getElementById("messages");
+      messagesDiv.innerHTML = ""; // Clear previous messages
+
+      if (isNaN(currentMast) || isNaN(targetMast)) {
+        showMessage("Please enter valid numbers for both mastery levels.", true);
+        return;
+      }
+
+      if (currentMast >= targetMast) {
+        showMessage("Target mastery must be higher than current mastery.", true);
+        return;
+      }
+
+      let totalXP = 0;
+      for (let level = currentMast; level < targetMast; level++) {
+        const xp = 54 + ((2 * Math.pow(level, 2.26) + 30) * 0.5);
+        totalXP += xp;
+      }
+
+      if (hasDoubleXP) {
+        totalXP /= 2;
+      }
+
+      totalXP = Math.round(totalXP);
+      const minKills = Math.ceil(totalXP / 1600000);
+      const maxKills = Math.ceil(totalXP / 1200000);
+
+      showMessage(`You need approximately ${totalXP} mastery XP to go from level ${currentMast} to level ${targetMast}. That means you need to defeat Longma approximately ${minKills} to ${maxKills} times.`);
+    }
+
+    function showMessage(text, isError = false) {
+      const div = document.createElement("div");
+      div.className = "message" + (isError ? " error" : "");
+      div.innerHTML = `<span class="close-btn" onclick="this.parentElement.remove()">x</span> ${text}`;
+      document.getElementById("messages").appendChild(div);
+    }
+  </script>
+</body>
+</html>
