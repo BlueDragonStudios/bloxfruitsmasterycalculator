@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap');
+
+@keyframes hueShift {
+    0% {
+      background: hsl(0, 100%, 20%); /* Dark Red */
+    }
+    14% {
+      background: hsl(45, 100%, 20%); /* Dark Orange */
+    }
+    28% {
+      background: hsl(90, 100%, 20%); /* Dark Yellow */
+    }
+    42% {
+      background: hsl(135, 100%, 20%); /* Dark Green */
+    }
+    57% {
+      background: hsl(180, 100%, 20%); /* Dark Cyan */
+    }
+    71% {
+      background: hsl(225, 100%, 20%); /* Dark Blue */
+    }
+    85% {
+      background: hsl(270, 100%, 20%); /* Dark Purple */
+    }
+    100% {
+      background: hsl(360, 100%, 20%); /* Dark Red (return to start) */
+    }
+  }
+  
+  /* Apply the animation to the body or any element */
+  body {
+    animation: hueShift 10s infinite linear;
+    background: hsl(0, 100%, 20%); /* Starting color */
+    height: 100vh; /* Full screen height */
+    margin: 0;
+    transition: background 1s ease; /* Smooth transition between hues */
+    color: #ffffff;
+    border: 10px solid white;
+    box-sizing: border-box;
+    font-weight: 100;
+  }
+
+  h3 {
+    width: 50vw;             
+    margin: 0 auto;          
+    text-align: center;     
+    word-wrap: break-word;
+    padding-bottom: 50px;
+  }
+
+#banner {
+    background-color: #ffffff7c;
+    color: white; 
+    text-align: center; 
+    padding: 20px 0; 
+    margin-bottom: 20px;
+  }
+  
+  #banner h2 {
+    font-size: 24px;
+    margin: 0;
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+  }
+
+
+.message {
+    color: #ffffff;
+    background-color: #ffffff7c;
+    padding: 10px;
+    margin: 10px 0;
+    position: absolute;
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+#mastForm {
+    font-family: 'DM Serif Display', serif;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  #mastForm input[type="number"],
+  #mastForm button {
+    font-size: 14px;
+    padding: 8px;
+    margin-top: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  input[type="number"]:focus {
+    outline: 5px solid #ffffff7c;
+    border: 2px solid #ffffff7c; 
+  }
+  
+  #mastForm input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+
+  input[type="checkbox"]:checked {
+    background-color: #ffffff7c; 
+    border-color: #ffffff7c; 
+  }
+  
+
+  input[type="checkbox"] {
+    accent-color: #ffffff7c;
+  }
+
+  #mastForm button {
+    background-color: #ffffff7c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Serif Display', serif;
+  }
+  
+  #mastForm button:hover {
+    background-color: #ffffff96;
+  }
